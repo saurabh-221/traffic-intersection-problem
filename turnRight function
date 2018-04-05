@@ -1,0 +1,25 @@
+static void turnright(orientation_t cardirection, unsigned int carnumber){
+
+switch(cardirection){
+case NORTH:
+lock_NE(carnumber);
+printf("Car %d, Moving South-East\n", carnumber);
+unlock_NE(carnumber);
+break;
+case SOUTH:
+lock_SW(carnumber);
+printf("Car %d, Moving North-West\n", carnumber);
+unlock_SW(carnumber);
+break;
+case EAST:
+lock_SE(carnumber);
+printf("Car %d, Moving West-South\n", carnumber);
+unlock_SE(carnumber);
+break;
+case WEST:
+lock_NW(carnumber);
+printf("Car %d, Moving East-North\n", carnumber);
+unlock_NW(carnumber);
+break;
+}
+}
