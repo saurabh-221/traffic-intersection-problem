@@ -30,7 +30,7 @@ void lock(CAR, MUTEX)
 {do 
 {         
 if (pthread_mutex_lock(&MUTEX)) { 
-  fprintf(stderr, "pthread_mutex_lock error %d\n\n", CAR);     
+  fprintf(stderr, "CAR LOCKED %d\n\n", CAR);     
 } 
 } while(0);}
 
@@ -38,7 +38,7 @@ void unlock(CAR, MUTEX)
 {do 
 {     
  if (pthread_mutex_unlock(&MUTEX)) { 
-  fprintf(stderr, "pthread_mutex_unlock error %d\n\n", CAR);  
+  fprintf(stderr, "CAR UNLOCKED %d\n\n", CAR);  
 } 
 } while(0);}
 
@@ -159,7 +159,7 @@ if(turn==LEFT){
 turnleft(cardir, carnumber);
 } else if(turn==RIGHT){
 turnright(cardir, carnumber);
-} else {//straight
+} else {
 gostraight(cardir, carnumber);
 }
 
@@ -168,7 +168,11 @@ return (void*)carnumberptr;
 
 int main(int argc, char **argv){
 
-int NUMCARS=10;
+int NUMCARS;
+printf("enter NUMCARS\n");
+scanf("%d",&NUMCARS);
+if(NUMCARS<=10)
+{
 int index, tid;
 unsigned int carids[NUMCARS];
 pthread_t carthreads[NUMCARS];
@@ -182,6 +186,11 @@ printf("%d",tid);
 
 for(index = 0; index <NUMCARS; index++){
 pthread_join(carthreads[index], NULL);
+}
+}
+else
+{
+printf("THE NUMBER OF NUMCARS ARE NOT VALID \n");
 }
 printf("Done\n");
 return 1;
