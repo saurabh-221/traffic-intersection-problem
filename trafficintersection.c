@@ -182,6 +182,7 @@ for(index = 0; index <NUMCARS; index++)
 carids[index] = index;
 tid = pthread_create(&carthreads[index], NULL, approachintersection,(void*)&carids[index]);
 printf("%d",tid);
+sleep(1);  
 }
 
 for(index = 0; index <NUMCARS; index++){
